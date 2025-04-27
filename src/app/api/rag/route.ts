@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { ragChain } from "@/lib/rag";
 
-// Essa função é chamada quando você fizer um POST para /api/rag
+// POST para /api/rag
 export async function POST(req: Request) {
   try {
     const { question } = await req.json();
@@ -10,7 +10,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Nenhuma pergunta enviada." }, { status: 400 });
     }
 
-    // Usa a cadeia RAG para gerar a resposta
+    // Usa a cadeia RAG para gerar a resposta, passando a pergunta
     const response = await ragChain.invoke({
       input: question,
     });
