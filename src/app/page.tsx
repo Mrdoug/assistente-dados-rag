@@ -1,10 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect} from "react";
 
 export default function Home() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+
+
+  useEffect(() => {
+    setQuestion("");
+    setAnswer("");
+  }, []);
 
   const handleSubmit = async () => {
     const res = await fetch("/api/rag", {

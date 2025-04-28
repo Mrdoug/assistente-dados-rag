@@ -1,5 +1,3 @@
-// src/lib/rag.ts
-
 import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
 import { Chroma } from "@langchain/community/vectorstores/chroma";// Usando o chroma, porém para teste troquei para o memory
 import { createRetrievalChain } from "langchain/chains/retrieval";
@@ -14,7 +12,7 @@ const model = new ChatOpenAI({
   modelName: "gpt-4o-mini",
 });
 
-// Cria o Prompt usado para juntar documentos, instuções e perguntas
+// junta documentos, instuções e perguntas
 // O Prompt é o que o modelo de linguagem vai usar para gerar a respost
 const prompt = ChatPromptTemplate.fromMessages([
   ["system", "Use the following context to answer the question."],
@@ -22,18 +20,17 @@ const prompt = ChatPromptTemplate.fromMessages([
   ["human", "{input}"],
 ]);
 
-// Cria a chain
+
 const combineDocsChain = await createStuffDocumentsChain({
   llm: model,
   prompt,
 });
 
-// Instancia os embeddings
+
 const embeddings = new OpenAIEmbeddings({
   openAIApiKey: process.env.OPENAI_API_KEY!,
 });
 
-// Inicializa o vetorstore e cria o retriever usando a mémória... preciso de um banco de dados depois
 async function initializeRAGChain() {
   const vectorstore = await MemoryVectorStore.fromTexts(
     [
