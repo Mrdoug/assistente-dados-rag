@@ -15,16 +15,6 @@ Este é um projeto de um assistente de dados baseado em **RAG (Retrieval-Augment
 - **[OpenAI API](https://openai.com/api/)**: Para geração de respostas e embeddings.
 - **MemoryVectorStore**: Armazenamento vetorial em memória para testes.
 
-## 📂 Estrutura do Projeto
-
-assistente-dados-rag/ 
-├── src/ │ 
-├── app/ │ 
-│ └── page.tsx # Interface principal do assistente 
-│ ├── lib/ 
-│ │ └── rag.ts # Configuração da cadeia RAG 
-├──
-
 
 ## ⚙️ Configuração e Execução
 
